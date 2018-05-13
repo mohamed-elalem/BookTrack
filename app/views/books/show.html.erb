@@ -1,0 +1,42 @@
+<!-- <%= @book.name %><br> -->
+<!-- <%= @book.description%><br>
+<%= link_to  "edit", edit_book_url(@book) %><br>
+<%= link_to  "delete", book_url(@book), method: :delete, data: {confirm: "Are you sure?"} %><br>
+<%= render @book.chapters%> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-11">
+      <table class='table table-hover'>
+        <tr>
+          <th>Name</th>
+          <td><%= @book.name %></td>
+        </tr>
+        <tr>
+          <th>Description</th>
+          <td><%= @book.description %></td>
+        </tr>
+        <tr>
+          <th>Chapters</th>
+          <td><%= render @book.chapters %></td>
+        </tr>
+        <tr>
+          <th>Progress</th>
+          <td>
+            <div class="progress">
+              <div class="progress-bar bg-<%= suitable_color(@book) %>" role="progressbar" style="width: <%= book_completed_percentage_for_html(@book) %>%;" aria-valuenow="<%= book_completed_percentage_for_html(@book) %>" aria-valuemin="0" aria-valuemax="100"><%= book_completed_percentage_for_html(@book) %>%</div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-1">
+      <%= link_to edit_book_url(@book) do %>
+        <%= fa_icon 'edit', class: 'text-primary', style: 'font-size: 20px' %>
+      <% end %>
+      <%= link_to book_url(@book), method: :delete, data: {confirm: "Are you sure?"}, style: 'font-size: 20px'  do %>
+        <%= fa_icon 'trash', class: 'text-danger' %>
+      <% end %>
+    </div>
+  </div>
+</div>

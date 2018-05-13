@@ -1,0 +1,13 @@
+<%= render partial: "layouts/form_error", locals:{errors: @chapter.errors}%> 
+<%= form_for [@book, @chapter] do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%=f.text_field :name , class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :number_of_pages %>
+    <%=f.number_field :number_of_pages , class: "form-control"%>
+  </div>
+  <%= f.submit class: "btn btn-outline-dark btn-block"%>
+<% end %>
+    
