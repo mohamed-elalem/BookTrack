@@ -8,7 +8,7 @@ module BooksHelper
   end
 
   def suitable_color(book)
-    color_levels = %w[danger warning info success]
-    color_levels[(book_completed_percentage(book) * color_levels.length).to_i]
+    color_levels = %w[danger warning info primary success]
+    color_levels[(book_completed_percentage(book) * (color_levels.length - 1)).to_i]
   end
 end
