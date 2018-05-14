@@ -1,1 +1,16 @@
-<%= link_to "#{chapter.number_of_chapter + 1}- #{chapter.name} (#{chapter.number_of_pages} pages)", book_chapter_url(chapter.book, chapter) %><br>
+<div class='container'>
+  <div class='row'>
+    <div class='col-8'>
+      <%= link_to "#{chapter_counter + 1}- #{chapter.name} (#{chapter.number_of_pages} pages)", book_chapter_url(chapter.book, chapter) %>
+    </div>
+    <div class='col-2 offset-2'>
+      <%= link_to toggle_read_book_chapter_url(chapter.book, chapter), method: :put do %>
+        <% if chapter.is_read %>
+          <%= fa_icon 'times', class: 'text-danger' %>
+        <% else %>
+          <%= fa_icon 'check', class: 'text-success' %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

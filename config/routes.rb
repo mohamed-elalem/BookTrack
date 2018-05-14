@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root to: 'books#index'
 
   resources :books do
-    resources :chapters
+    resources :chapters do
+      put 'toggle_read', to: 'chapters#toggle_read', on: :member
+    end
   end
 end

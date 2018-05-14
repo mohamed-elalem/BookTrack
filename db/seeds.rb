@@ -12,7 +12,6 @@
   book.description = Faker::OnePiece.quote
   (Random.rand(20) + 1).times do |i|
     book.chapters << Chapter.create(name: Faker::OnePiece.character,
-                                    number_of_chapter: i,
                                     number_of_pages: Random.rand(50) + 1)
   end
   book.save

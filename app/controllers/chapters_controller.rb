@@ -1,5 +1,5 @@
 class ChaptersController < ApplicationController
-  before_action :set_chapter, only: %i[show edit update destroy]
+  before_action :set_chapter, only: %i[show edit update destroy toggle_read]
   before_action :set_book
 
   def index
@@ -33,6 +33,11 @@ class ChaptersController < ApplicationController
   def destroy
     @chapter.delete
     redirect_to @book
+  end
+
+  def toggle_read
+    @chapter.toggle_read
+    redirect_back fallback_location: root_url
   end
 
   private

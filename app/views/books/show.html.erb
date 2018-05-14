@@ -24,7 +24,12 @@
           <th>Progress</th>
           <td>
             <div class="progress">
-              <div class="progress-bar bg-<%= suitable_color(@book) %>" role="progressbar" style="width: <%= book_completed_percentage_for_html(@book) %>%;" aria-valuenow="<%= book_completed_percentage_for_html(@book) %>" aria-valuemin="0" aria-valuemax="100"><%= book_completed_percentage_for_html(@book) %>%</div>
+              <div class="progress-bar bg-<%= suitable_color(@book) %>" role="progressbar" style="width: <%= book_completed_percentage_for_html(@book) %>%;" aria-valuenow="<%= book_completed_percentage_for_html(@book) %>" aria-valuemin="0" aria-valuemax="100">
+                
+                <%= @book.chapters.completed.length %> Chapters completed
+                (<%= book_completed_percentage_for_html(@book) %>%)
+              
+              </div>
             </div>
           </td>
         </tr>

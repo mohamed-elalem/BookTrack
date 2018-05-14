@@ -6,4 +6,9 @@ class Chapter < ApplicationRecord
   scope :completed, -> { where(is_read: true) }
 
   scope :pages, -> { sum(:number_of_pages) }
+
+
+  def toggle_read
+    update_attribute(:is_read, !is_read)
+  end
 end
