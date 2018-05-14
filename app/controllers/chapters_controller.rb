@@ -8,12 +8,13 @@ class ChaptersController < ApplicationController
 
   def new
     @chapter = Chapter.new
+    session[:redirect_to] = request.referrer || root_url
   end
 
   def create
     @chapter = @book.chapters.build chapter_params
     if @chapter.save
-      redirect_to @book
+      redirect_to session[:redirect_to] || @book
     else
       render 'new'
     end

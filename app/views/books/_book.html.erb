@@ -7,6 +7,19 @@
     <%= render book.chapters %>
   </div>                  
 </div>
+<div class='row'>
+  <div class='offset-3 col-8'>
+    <%= render partial: 'progress', locals: { book: book } %>
+  </div>
+</div>
 <br>
+<div class='row'>
+  <div class='col-4 offset-5'>
+    <%= link_to new_book_chapter_url(book), class: 'btn btn-primary btn-block' do %>
+      <%= fa_icon 'plus', text: 'Add new chapter' %>
+    <% end %>
+  </div>
+</div>
+<hr>
 
   
