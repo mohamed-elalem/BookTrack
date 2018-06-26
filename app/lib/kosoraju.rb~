@@ -1,0 +1,5 @@
+class Kosoraju
+  def initialize(graph)
+    @graph = graph
+  end
+end

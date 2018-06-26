@@ -1,0 +1,19 @@
+
+<%= render partial: "layouts/form_error", locals:{errors: @book.errors}%> 
+
+
+<%=  form_tag book_dependencies_url(@book), method: method do %>
+
+<div class='form-group'>
+  <%= label_tag :children %>
+  <%= select_tag :child_ids, options_for_select(@book.others.collect { |r| [ r.name, r.id ] }), multiple: true, class: 'form-control', blank: false %>
+</div>
+<%= submit_tag submitText,  class: 'btn btn-primary' %>
+
+<% end %>
+
+<script>
+  $('select').select2({
+  theme: 'bootstrap'
+  });
+</script>

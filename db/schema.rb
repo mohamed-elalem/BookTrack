@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_14_090427) do
+ActiveRecord::Schema.define(version: 2018_05_30_132736) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "books", force: :cascade do |t|
     t.string "name"
@@ -22,11 +25,20 @@ ActiveRecord::Schema.define(version: 2018_05_14_090427) do
   create_table "chapters", force: :cascade do |t|
     t.string "name"
     t.integer "number_of_pages"
-    t.integer "book_id"
+    t.bigint "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_read", default: false
     t.index ["book_id"], name: "index_chapters_on_book_id"
   end
 
+  create_table "dependencies", force: :cascade do |t|
+    t.integer "parent_id"
+    t.integer "child_id"
+    t.index ["child_id"], name: "index_dependencies_on_child_id"
+    t.index ["parent_id", "child_id"], name: "index_dependencies_on_parent_id_and_child_id", unique: true
+    t.index ["parent_id"], name: "index_dependencies_on_parent_id"
+  end
+
+  add_foreign_key "chapters", "books"
 end

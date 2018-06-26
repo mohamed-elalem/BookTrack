@@ -1,0 +1,47 @@
+class Graph
+  attr_accessor :graph
+  
+  def initialize
+    edges = yield([]) if block_given?
+    @graph = build_graph_from edges
+  end
+
+  private
+
+  def initialize_engine
+    @indegrees = calculate_indegrees_from @graph
+  end
+  
+  def build_graph_from(edges)
+    graph = {}
+    edges.each do |edge|
+      from, to = edge[0], edge[1]
+      graph[from] = [] unless graph.has_key? from
+      graph[from] << to
+    end
+    graph
+  end
+
+  def calculate_indegrees_from(graph)
+    indegrees = {}
+    graph.each do |vertex, neighbors|
+      indegrees[vertex] = 0 unless indegrees.has_key? vertex
+      neighbors.each do |neighbor|
+        indegrees[neighbor] = 0 unless indegrees.has_key? neighbor
+        indegrees[neighbor] += 1
+      end
+    end
+    indegrees
+  end
+
+  def transpose(graph)
+    transposed_graph = {}
+    graph.each do |vertex, neighbors|
+      neighbors.each do |neighbor|
+        transposed_graph[neighbor] = [] unless transposed_graph.has_key? neighbor
+        transposed_graph[neighbor] << vertex
+      end
+    end
+    transposed_graph
+  end
+end

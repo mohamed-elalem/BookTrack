@@ -14,6 +14,15 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require rails-ujs
+//= require select2
 //= require activestorage
 //= require turbolinks
+//= require d3/build/d3
 //= require_tree .
+
+$(document).ready(function () {
+  $('#sidebarCollapse').on('click', function () {
+      $('#sidebar').toggleClass('active');
+      $(this).toggleClass('active');
+  });
+});

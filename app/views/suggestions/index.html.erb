@@ -1,0 +1,16 @@
+<!-- <%= @priorities.inspect %> -->
+<div class="jumbotron">
+  <h1>
+    The suggested order of reading
+  </h1>
+</div>
+
+<%= render partial: 'shared/book_priority_table', locals: {priorities: @priorities} %>
+
+<div class='container'>
+  <div class='row'>
+    <div class='col-12'>
+      <%= render partial: 'graph', locals: {graph: @textual_graph.graph} %>
+    </div>
+  </div>
+</div>

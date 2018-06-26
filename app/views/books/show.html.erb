@@ -38,8 +38,18 @@
     </div>
   </div>
   <div class='row'>
-    <div class='offset-8 col-3'>
-      <%= link_to "Add new chapter", new_book_chapter_url(@book), class: 'btn btn-block btn-primary' %>
+    <div class='col-12'>
+      <div class='btn-group d-flex justify-content-center' role='group'>
+          <%= link_to 'Suggested Reading Path', reading_path_book_url(@book), class: 'btn btn-info' %>
+          <%= link_to 'Add new postrequisits', new_book_dependency_url(@book), class: 'btn btn-dark' %>
+          <%= link_to "Add new chapter", new_book_chapter_url(@book), class: 'btn btn-primary' %>
+      </div>
     </div>
+    <!-- <div class='col-3'>
+      <%= link_to 'Suggested Reading Path', reading_path_book_url(@book), class: 'btn btn-blocl btn-info' %>
+    </div>
+    <div class='offset-5 col-3'>
+      <%= link_to "Add new chapter", new_book_chapter_url(@book), class: 'btn btn-block btn-primary' %>
+    </div> -->
   </div>
 </div>

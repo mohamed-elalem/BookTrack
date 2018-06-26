@@ -1,15 +1,75 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>BookTrack</title>
-    <%= csrf_meta_tags %>
+
+<head>
+  <title>BookTrack</title>
+  <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+  <div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <h3>Book Tracking</h3>
+      </div>
+
+      <ul class="list-unstyled components">
+        <p>Sites</p>
+        <li>
+          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Books</a>
+          <ul class="collapse list-unstyled" id="homeSubmenu">
+            <li><%= link_to 'List', books_url %></li>
+            <li><%= link_to 'New Book', new_book_url %></li>
+          </ul>
+        </li>
+        <li>
+          <%= link_to 'Suggestion', suggestions_url %>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Page Content Holder -->
+    <div id="content">
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+
+          <div class="navbar-header">
+            <button type="button" id="sidebarCollapse" class="navbar-btn">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="#">Page</a>
+              </li>
+              <li>
+                <a href="#">Page</a>
+              </li>
+              <li>
+                <a href="#">Page</a>
+              </li>
+              <li>
+                <a href="#">Page</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <%= yield %>
+      
+    </div>
+  </div>
+</body>
+
 </html>

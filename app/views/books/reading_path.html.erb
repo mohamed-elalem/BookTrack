@@ -1,0 +1,7 @@
+<div class='container'>
+<div class='row'>
+  <div class='col-12'>
+    <h3>Suggested Reading path for <%= @book.name %></h3>
+  </div>
+</div>
+<%= render partial: 'shared/book_priority_table', locals: {priorities: @priorities} %>
